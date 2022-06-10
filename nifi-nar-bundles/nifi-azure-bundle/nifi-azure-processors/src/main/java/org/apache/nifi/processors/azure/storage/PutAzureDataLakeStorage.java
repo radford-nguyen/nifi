@@ -37,8 +37,10 @@ import org.apache.nifi.processor.ProcessSession;
 import org.apache.nifi.processor.ProcessorInitializationContext;
 import org.apache.nifi.processor.exception.ProcessException;
 import org.apache.nifi.processors.azure.AbstractAzureDataLakeStorageProcessor;
+
 import com.azure.core.util.Context;
 import com.azure.storage.common.implementation.Constants;
+import com.azure.storage.file.datalake.models.DataLakeRequestConditions;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
@@ -199,11 +201,14 @@ public class PutAzureDataLakeStorage extends AbstractAzureDataLakeStorageProcess
 
     static private void doFlush(DataLakeFileClient fileClient, long position) {
         final boolean CLOSE = true;
+        final boolean overwrite = true;
 
         // modified code from azure SDK DataLakeFileClient.flush in order to
         // explicitly set CLOSE = true (instead of the opaque, hard-coded false)
-        com.azure.storage.file.datalake.models.DataLakeRequestConditions requestConditions =
-            new com.azure.storage.file.datalake.models.DataLakeRequestConditions().setIfNoneMatch(Constants.HeaderConstants.ETAG_WILDCARD);
+        DataLakeRequestConditions requestConditions = new DataLakeRequestConditions();
+        if (!overwrite) {
+            requestConditions = new DataLakeRequestConditions().setIfNoneMatch(Constants.HeaderConstants.ETAG_WILDCARD);
+        }
         fileClient.flushWithResponse(position, false, CLOSE, null, requestConditions, null, Context.NONE).getValue();
     }
 }
