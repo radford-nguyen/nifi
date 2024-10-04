@@ -28,9 +28,9 @@
     <properties>
         <azure-storage.version>8.6.6</azure-storage.version>
         <azure.core.version>1.21.0</azure.core.version>
-        <azure.identity.version>1.4.0</azure.identity.version>
+        <azure.identity.version>1.14.0</azure.identity.version>
         <!-- azure-identity depends on msal4j transitively, keep these versions consistent -->
-        <msal4j.version>1.11.0</msal4j.version>
+        <msal4j.version>1.17.2</msal4j.version>
         <azure-cosmos.version>4.20.0</azure-cosmos.version>
     </properties>
 
