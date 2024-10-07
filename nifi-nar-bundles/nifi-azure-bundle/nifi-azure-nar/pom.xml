@@ -22,6 +22,7 @@
         <version>1.15.3</version>
     </parent>
 
+    <version>1.15.3-azure.identity-1.8.0</version>
     <artifactId>nifi-azure-nar</artifactId>
     <packaging>nar</packaging>
     <properties>
@@ -33,7 +34,7 @@
         <dependency>
             <groupId>org.apache.nifi</groupId>
             <artifactId>nifi-azure-processors</artifactId>
-            <version>1.15.3</version>
+            <version>1.15.3-azure.identity-1.8.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.nifi</groupId>
