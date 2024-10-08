@@ -21,6 +21,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <version>1.15.3-azure.identity-1.8.0</version>
     <artifactId>nifi-azure-services-api-nar</artifactId>
     <packaging>nar</packaging>
 
